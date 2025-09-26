@@ -59,6 +59,62 @@ int main() {
 
 
 
+// EJERCICICIO  2 - BÚSQUEDA LINEAL MEJORADA
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int busquedaLinealMejorada(int arr[], int n, int valor) {
+    for (int i = 0; i < n; i++) {
+        // Compara el elemento actual con el valor que buscamos
+        if (arr[i] == valor) {
+            // Devuelve el índice donde encontramos el valor y ya no recorre el resto del arreglo
+            return i; 
+        }
+    }
+    // El valor no está en el arreglo
+    return -1;
+}
+
+int main() {
+	// CREAR EL ARREGLO
+    printf("Dame el tamaño de arreglo:\n");
+    int n; 
+    if (scanf("%d", &n) != 1 || n <= 0){
+        printf("Tamaño inválido\n");
+    	return 1;
+    } 
+    int *arreglo = (int*)malloc(sizeof(int) * n);
+    if (!arreglo){
+        printf("Error al asignar memoria\n");
+    	return 1;
+    } 
+
+    // PEDIR NÚMEROS PARA EL ARREGLO
+    printf("Ingrese los numeros del arreglo con un espacio intermedio:\n");
+    for (int i = 0; i < n; ++i){
+    	scanf("%d", &arreglo[i]);
+    } 
+
+    // PEDIR EL VALOR A BUSCAR
+    int valor;
+    printf("¿Qué número quieres buscar?\n");
+    scanf("%d", &valor);
+
+    int resultado = busquedaLinealMejorada(arreglo, n, valor);
+
+    if (resultado != -1) {
+        printf("El número %d se encontró en el índice: %d\n", valor, resultado);
+    } else {
+        printf("El número %d no se encontró en el arreglo.\n", valor);
+    }
+    
+    free(arreglo);
+
+    return 0;
+}
+
+
 
 //EJERCICIO 3 - BUSQUEDA LINEAL RECURSIVA
 #include <stdio.h> 
