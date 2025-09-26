@@ -1,6 +1,6 @@
 // Escribe aquí la implementación de los ejercicios de Counting Sort.
 
-//Ejercicio 1 
+//EJERCICIO 1 
 //Implementacion de Counting_Sort 
 //Ejercicio 1 
 
@@ -55,4 +55,87 @@ int main() {
 	return 0;
 }
 
-//Ejercicio 2
+//EJERCICIO 2
+//Implementacion de Counting_Sort (similar) para resolver el problema
+
+#include <stdio.h>
+#include <string.h>
+
+//Examine
+char Examine(char A[], int i) {
+	return A[i];
+}
+
+//Swap 
+void Swap(char A[], int i, int j){
+	char temp = A[i];
+	A[i] = A[j];
+	A[j] = temp;
+}
+
+//Implementamos Counting Sort
+void CountingSort(char A[], int n) {
+	int count_r = 0, count_b = 0, count_a = 0;
+
+	//Contamos la frecuencia de aparicion de colores
+	for(int i = 0; i < n; i++) {
+		char c = Examine(A, i);
+		if(c == 'r') {
+			count_r++;
+		} else if(c == 'b') {
+			count_b++;
+		} else if (c == 'a') {
+			count_a++;
+		} else {
+			printf("Esa letra no simboliza ningun color permitido");
+		}	
+	}
+
+	//Colocar en orden 
+	int index = 0;
+
+	//Bloque de rojo
+	for(int i = 0; i < count_r; i++) {
+		while(Examine(A, index) != 'r') {
+			//buscamos una r que se encuentre adelante para traerla
+			for(int j = index + 1; j < n; j++) {
+				if(Examine(A, j) == 'r') {
+					Swap(A, index, j);
+				break;
+				}
+			}
+		}
+		index ++;
+	}
+
+	//Bloque de blanco 
+	for(int i = 0; i < count_b; i++) {
+		while(Examine(A, index) != 'b') {
+			//buscamos una b que se encuentre adelante para traerla
+			for(int j = index + 1; j < n; j++) {
+				if(Examine(A, j) == 'b') {
+					Swap(A, index, j);
+				break;
+				}
+			}
+		}
+		index ++;
+	}
+	//ya no es necesario repetirlo con azul porque en automático quedarán al final
+}
+
+int main() {
+	char Arr[100];
+
+	printf("Ingresa la secuencia de colores usando:\n");
+	printf(" (r = rojo), (b = blanco) y (a = azul)\n");
+	scanf("%s", Arr);
+
+	int n = strlen(Arr);
+	CountingSort(Arr, n);
+
+	printf("Ordenado (rojo / blanco / azul): %s\n", Arr);
+	return 0;
+}
+
+
