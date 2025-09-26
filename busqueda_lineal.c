@@ -8,15 +8,19 @@
 #include <stdlib.h>
 
 int busquedaLinealSimple(int arr[], int n, int valor) {
+	int temporal = -1; 
     for (int i = 0; i < n; i++) {
         // Compara el elemento actual con el valor que buscamos
         if (arr[i] == valor) {
-            // Devuelve el índice donde encontramos el valor
-            return i; 
+            // Guarda el indice en temporal y después sigue recorriendo el arrgelo
+            temporal = i; 
         }
     }
-    // El valor no está en el arreglo
-    return -1;
+    /* Regresa el valor de temporal
+	-> Si lo encontró regresará el valor del índice
+	-> Si no lo encontró regresará -1 que es el valor con el que está inicializado*/
+    
+	return temporal;
 }
 
 int main() {
