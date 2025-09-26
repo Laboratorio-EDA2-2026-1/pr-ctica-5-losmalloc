@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <limits.h>
 
-
+//Encuentra el nùmero más grande en el arreglo
 	int encontrarMaximo(int arr[], int n){
 		int max= arr[0];
 		
@@ -22,7 +22,7 @@
 	void countingSortRadix(int arr[], int n, int p){
 
 		int output[n];
-		int count[10] = {0};
+		int count[10] = {0}; //Cuenta de 0 a 9
 
 		for (int i=0; i<n; i++){
 			int numero= (arr[i]/ p)%10;
@@ -32,7 +32,7 @@
 		for(int i = 1; i<10; i++){
 			count[i]+= count[i-1];
 		}
-
+		//Ordena el arreglo
 		for (int i = n-1; i>=0; i--){
 			int numero = (arr[i]/p)%10;
 			output[count[numero]-1]=arr[i];
@@ -55,7 +55,7 @@ void radixSort(int arr[], int n){
 	countingSortRadix(arr, n, p);
 }
 }
-
+//Imprime el arreglo
 	void imprimir (int arr[], int n){
 
 		for(int i=0; i<n; i++){
