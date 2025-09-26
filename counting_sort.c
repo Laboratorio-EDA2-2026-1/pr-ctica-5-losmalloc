@@ -1,7 +1,7 @@
 // Escribe aquí la implementación de los ejercicios de Counting Sort.
 
 //Ejercicio 1 
-//Implementacion de counting sort 
+//Implementacion de Counting_Sort 
 //Ejercicio 1 
 
 #include <stdio.h>
@@ -21,7 +21,7 @@ void CountingSort(char Arr[], int n) {
 
 	//Acumular conteos (sumamos el primer valor al siguiente
 	// de manera sucesiva hasta llegar al final del arreglo a ordenar)
-	for (int i = 0; i< range; i++) {
+	for (int i = 1; i < range; i++) {
 		count[i] += count[i - 1];
 	}
 
@@ -37,19 +37,22 @@ void CountingSort(char Arr[], int n) {
 	for(int i = 0; i < n; i++) {
 		Arr[i] = output[i];
 	}
+
 	free (output); //Recordar que output es un arreglo de salida temporal
 }	
 int main() {
-	char Arr[100];
+	char arr[100];
 
-	printf("Ingrese la cadena que quiere ordenar:\n");
-	scanf("%s", Arr);
+	printf("Ingrese la cadena que quiere ordenar (letras minusculas sin espacios):\n");
+	scanf("%s", arr);
 
-	int n = strlen(Arr); //tamaño del arreglo usando la longitud de la cadena
+	int n = strlen(arr); //tamaño del arreglo usando la longitud de la cadena
 	
-	CountingSort(Arr, n);
+	CountingSort(arr, n);
 
-	printf("Cadena ordenada: %s\n", Arr);
+	printf("Cadena ordenada: %s\n", arr);
 
 	return 0;
 }
+
+//Ejercicio 2
